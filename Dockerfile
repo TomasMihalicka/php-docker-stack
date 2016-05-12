@@ -46,6 +46,11 @@ RUN sed -i "s/group = www-data/group = root/" /etc/php/7.0/fpm/pool.d/www.conf
 ## Pass all docker environment
 RUN sed -i '/^;clear_env = no/s/^;//' /etc/php/7.0/fpm/pool.d/www.conf
 
+# Get access to FPM-ping page /ping
+RUN sed -i '/^;ping\.path/s/^;//' /etc/php/7.0/fpm/pool.d/www.conf
+# Get access to FPM_Status page /status
+RUN sed -i '/^;pm\.status_path/s/^;//' /etc/php/7.0/fpm/pool.d/www.conf
+
 # Create sock
 RUN mkdir /run/php/
 RUN touch /run/php/php7.0-fpm.sock
@@ -53,7 +58,7 @@ RUN touch /run/php/php7.0-fpm.sock
 # Copy configurations
 COPY conf/nginx.conf /etc/nginx/
 COPY conf/supervisord.conf /etc/supervisor/conf.d/
-COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
+COPY conf/php.ini /etc/php/7.0/fpm/conf.d/40-custom.ini
 
 ################################################################################
 # Volumes
