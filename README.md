@@ -5,7 +5,6 @@
 ## What's inside
 
 * [Nginx](http://nginx.org/)
-* [MySQL](http://mariadb.org/)
 * [PostgreSQL](http://www.postgresql.org/)
 * [MongoDB](http://www.mongodb.org/)
 * [PHP-FPM](http://php-fpm.org/)
